@@ -1,5 +1,6 @@
 package com.xicheng.es.lucene;
 
+import com.xicheng.es.lucene.common.IndexConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.index.IndexWriter;
@@ -20,7 +21,7 @@ import java.nio.file.Paths;
 public class C06_DeleteIndex {
 
     public static void main(String[] args) throws Exception {
-        Path indexPath = Paths.get("src\\main\\resources\\c04_index");
+        Path indexPath = Paths.get(IndexConstant.INDEX_PATH);
         FSDirectory fsDirectory = FSDirectory.open(indexPath);
 
         Analyzer analyzer = new C02_IKAnalyzer4Lucene7();

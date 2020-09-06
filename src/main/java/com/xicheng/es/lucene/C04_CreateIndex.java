@@ -1,5 +1,6 @@
 package com.xicheng.es.lucene;
 
+import com.xicheng.es.lucene.common.IndexConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
@@ -23,7 +24,7 @@ public class C04_CreateIndex {
 
     public static void main(String[] args) throws Exception {
         // 索引目录文件
-        Path indexPath = Paths.get("src\\main\\resources\\c04_index");
+        Path indexPath = Paths.get(IndexConstant.INDEX_PATH);
         FSDirectory fsDirectory = FSDirectory.open(indexPath);
         // 引入分词计算器
         Analyzer analyzer = new C02_IKAnalyzer4Lucene7();

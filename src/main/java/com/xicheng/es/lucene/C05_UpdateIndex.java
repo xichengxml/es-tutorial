@@ -1,5 +1,6 @@
 package com.xicheng.es.lucene;
 
+import com.xicheng.es.lucene.common.IndexConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
@@ -23,7 +24,7 @@ import java.nio.file.Paths;
 public class C05_UpdateIndex {
 
     public static void main(String[] args) throws Exception {
-        Path indexPath = Paths.get("src\\main\\resources\\c04_index");
+        Path indexPath = Paths.get(IndexConstant.INDEX_PATH);
         FSDirectory fsDirectory = FSDirectory.open(indexPath);
 
         Analyzer analyzer = new C02_IKAnalyzer4Lucene7();
@@ -31,7 +32,7 @@ public class C05_UpdateIndex {
 
         Document documentAfterUpdate = new Document();
         documentAfterUpdate.add(new StringField("id", "3", Field.Store.YES));
-        documentAfterUpdate.add(new StringField("title", "after update", Field.Store.YES));
+        documentAfterUpdate.add(new StringField("title", "晓说金融", Field.Store.YES));
         documentAfterUpdate.add(new StringField("sell_point", "用于测试更新", Field.Store.YES));
 
         IndexWriter indexWriter = new IndexWriter(fsDirectory, indexWriterConfig);
