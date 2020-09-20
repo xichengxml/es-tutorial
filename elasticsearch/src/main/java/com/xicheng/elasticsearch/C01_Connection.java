@@ -12,7 +12,7 @@ import java.net.InetAddress;
 import java.util.List;
 
 /**
- * description
+ * description 测试连通性
  *
  * @author xichengxml
  * @date 2020-09-20 13:38

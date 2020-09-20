@@ -11,4 +11,8 @@ public interface EsConstant {
     String HOST = "192.168.133.130";
 
     int PORT = 9300;
+
+    String INDEX_NAME = "jtdb_item";
+
+    String TYPE_NAME = "tb_item";
 }
