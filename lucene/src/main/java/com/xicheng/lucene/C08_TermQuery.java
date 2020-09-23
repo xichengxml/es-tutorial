@@ -1,6 +1,6 @@
 package com.xicheng.lucene;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.xicheng.lucene.common.IndexConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.analysis.Analyzer;
@@ -25,8 +25,6 @@ import java.nio.file.Paths;
 @Slf4j
 public class C08_TermQuery {
 
-    private static final Gson GSON = new Gson();
-
     public static void main(String[] args) throws Exception {
         // 路径
         Path path = Paths.get(IndexConstant.INDEX_PATH);
@@ -39,7 +37,7 @@ public class C08_TermQuery {
         // 词项查询
         Term term = new Term("title", "北大");
         TermQuery termQuery = new TermQuery(term);
-        log.info("C08_TermQuery main termQuery: {}", GSON.toJson(termQuery));
+        log.info("C08_TermQuery main termQuery: {}", JSON.toJSONString(termQuery));
         // 获取查询结果
         TopDocs topDocs = indexSearcher.search(termQuery, 10);
         ScoreDoc[] scoreDocs = topDocs.scoreDocs;

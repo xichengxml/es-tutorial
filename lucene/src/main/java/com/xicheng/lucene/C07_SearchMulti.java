@@ -1,6 +1,6 @@
 package com.xicheng.lucene;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.xicheng.lucene.common.IndexConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.document.Document;
@@ -24,8 +24,6 @@ import java.nio.file.Paths;
 @Slf4j
 public class C07_SearchMulti {
 
-    private static final Gson GSON = new Gson();
-
     public static void main(String[] args) throws Exception {
         // 路径
         Path indexPath = Paths.get(IndexConstant.INDEX_PATH);
@@ -41,14 +39,14 @@ public class C07_SearchMulti {
         String[] fields = {"title", "sell_point"};
         MultiFieldQueryParser multiFieldQueryParser = new MultiFieldQueryParser(fields, analyzer);
         Query query = multiFieldQueryParser.parse("江湖夜雨");
-        log.info("C07_SearchMulti main query: {}", GSON.toJson(query));
+        log.info("C07_SearchMulti main query: {}", JSON.toJSONString(query));
 
         // 查询10条数据, 处理返回结果
         TopDocs topDocs = indexSearcher.search(query, 10);
         ScoreDoc[] scoreDocs = topDocs.scoreDocs;
         for (ScoreDoc scoreDoc : scoreDocs) {
             Document document = indexSearcher.doc(scoreDoc.doc);
-            log.info("C07_SearchMulti main scoreDoc: {}", GSON.toJson(document));
+            log.info("C07_SearchMulti main scoreDoc: {}", JSON.toJSONString(document));
         }
     }
 }
