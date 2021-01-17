@@ -18,7 +18,8 @@
 
     <modules>
         <module>lucene</module>
-        <module>elasticsearch</module>
+        <module>es-tedu</module>
+        <module>es-geektime</module>
     </modules>
 
     <properties>
